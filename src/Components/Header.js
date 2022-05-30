@@ -7,7 +7,13 @@ import {
   Form,
   Button
 } from "react-bootstrap";
-import logo from "../logo.svg";
+import logo from '../logo.svg';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from '../Pages/Home';
+import Contacts from '../Pages/Contacts';
+import About from '../Pages/About';
+import Blog from '../Pages/Blog';
+
 
 export default class Header extends Component {
   render() {
@@ -22,17 +28,18 @@ export default class Header extends Component {
                 width="30"
                 className="d-inline-block align-top"
                 alt = "Logo"
-              /> React Site
+              />
+              React Site
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav claccName="me-auto">
+              <Nav className="mr-auto">
                 <Nav.Link href="/"> Home </Nav.Link>
                 <Nav.Link href="/about"> About us </Nav.Link>
                 <Nav.Link href="/contacts"> Contacts </Nav.Link>
                 <Nav.Link href="/blog"> Blog </Nav.Link>
               </Nav>
-              <Form inline>
+              <Form inline="true">
                 <FormControl
                   type ="text"
                   placeholder="Search"
@@ -43,6 +50,15 @@ export default class Header extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/contacts" element={<Contacts />}/>
+            <Route path="/blog" element={<Blog />}/>
+          </Routes>
+        </Router>
       </>
     )
   }
